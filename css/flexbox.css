@@ -1,0 +1,128 @@
+/*todo -- Para espaciar correctamente los elementos de un grid tenemos que hacer algunos cálculos con el viejo y buen margin y width. */
+
+.headerPrincipal .container {
+  /*? trabajo dentro el container con todos los objetos usando flex (uso lo que ya se de flexboxPlayground)*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerPrincipal-nav {
+  /* ahora trabajo al nav como hijo del container PERO padre de sus elementos internos*/
+  display: flex;
+}
+
+.rodapePrincipal-patrocinadores .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rodapePrincipal-patrocinadores-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around; /** en este caso si no le daba el tamaño al div no funcionaba la separación */
+  width: 70%;
+  margin-right: 5%;
+}
+
+.rodapePrincipal-contatoForm {
+  width: 25%;
+}
+.rodapePrincipal-contatoForm-fieldset {
+  display: flex; /* para que el botón del input quede siempre al lado y no debajo*/
+}
+.rodapePrincipal-navMap-list {
+  display: flex;
+  flex-direction: column; /* todos los items en columna*/
+  height: 260px; /* defino una altura para trabajar NO me gustó este método */
+  flex-wrap: wrap; /* hace que quede dentro del container */
+}
+
+.contenidoPrincipal-cursos {
+  /*? padre de la Ul si no modificara los hijos quedaría superpuesto*/
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contenidoPrincipal-cursos-link {
+  display: flex;
+  width: 23%; /*? otra vez adivina el porcentaje para el tamaño (usa 23% para que sean 4 elementos con un pequeño margen) */
+  /* space-around / between: no funcionan cuando no tenemos números completos de ítems, es decir, cuando la última fila tiene 2 ítems y las otras tienen 4, por ejemplo.*/
+}
+
+/* clase ajuste del video*/
+.videoSobre .container {
+  display: flex;
+}
+
+.videoSobre-sobre {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.videoSobre-video {
+  flex-grow: 2; /*? esta propiedad hace crecer al elemento --- Le da mucho mas espacio al video dentro del container*/
+  flex-shrink: 2; /* contrario a flex grow */ /** esta agregado para que cuando se reduzca la pantalla sea bastante menor el tamaño del video*/
+}
+.videoSobre-sobre-list {
+  flex-grow: 2; /** Le di mas tamaño para alejar el botón hacia abajo*/
+}
+
+/*! responsive*/
+/*? Todos estos cambios se van a aplicar hasta un máximo de 768px luego vuelve al CSS de arriba*/
+
+@media (max-width: 768px) {
+  .headerPrincipal .container {
+    /*? cambio la orientación en columna*/
+    display: flex;
+    flex-direction: column;
+    align-items: initial; /* los items ocupan todo el ancho y no solo el centro*/
+    text-align: center;
+  }
+
+  .headerPrincipal-nav {
+    flex-direction: column;
+  }
+
+  .contenidoPrincipal-cursos {
+    flex-direction: column;
+  }
+
+  .contenidoPrincipal-cursos-link {
+    width: 100%;
+  }
+
+  .rodapePrincipal-navMap-list {
+    height: auto;
+    flex-wrap: nowrap;
+  }
+  .rodapePrincipal-patrocinadores .container {
+    /* aplico los cambios a las dos clases*/
+    flex-direction: column;
+  }
+
+  .rodapePrincipal-contatoForm {
+    width: 100%;
+  }
+  .rodapePrincipal-patrocinadores-list {
+    align-items: center;
+    width: 100%;
+    margin: 0%;
+  }
+
+  .rodapePrincipal-contatoForm-fieldset {
+    justify-content: center;
+  }
+
+  .videoSobre .container {
+    flex-direction: column;
+  }
+
+  /** flex order --para cambiar el orden de algún item entre la vista escritorio o mobile*/
+  /**   https://css-tricks.com/snippets/css/a-guide-to-flexbox/   */
+
+  .headerPrincipal-nav-link-app {
+    /* cambio el orden del link app solo en mobile*/
+    order: -1;
+  }
+}
